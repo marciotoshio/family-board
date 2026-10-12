@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="manifest" href="/static/manifest.json">
+<title>Family Board</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div id="app">
+  <!-- Top bar -->
+  <header>
+    <div class="h-left">
+      <span id="date-display"></span>
+    </div>
+    <div class="h-center">
+      <h1>Family Board</h1>
+    </div>
+    <div class="h-right">
+      <button class="icon-btn" onclick="triggerScrape()" title="Check emails">📧</button>
+      <button class="icon-btn" onclick="showAddPanel()" title="Add item">➕</button>
+    </div>
+  </header>
+
+  <div id="body">
+  <main id="main">
+  <!-- Family member filter tabs (rendered from /api/config) -->
+  <nav id="member-tabs"></nav>
+
+  <!-- Week navigation -->
+  <div id="week-nav">
+    <button class="nav-btn" onclick="shiftWeek(-1)">←</button>
+    <span id="week-label"></span>
+    <button class="nav-btn" onclick="shiftWeek(1)">→</button>
+    <button class="nav-btn today-btn" onclick="goToday()">Today</button>
+  </div>
+
+  <!-- Calendar grid -->
+  <div id="calendar-grid"></div>
+
+  <!-- Cash items + upcoming bar -->
+  <div id="cash-bar">
+    <div class="cash-header" onclick="toggleCash()">
+      <span>💰 School Cash Items</span>
+      <span id="cash-summary"></span>
+      <span id="cash-toggle-icon">▼</span>
+    </div>
+    <div id="cash-list"></div>
+  </div>
+  </main>
+
+  <!-- Right sidebar: clock, weather, family message, shopping list -->
+  <aside id="sidebar">
+    <div id="clock-card">
+      <div id="clock-time">--:--</div>
+      <div id="clock-date">—</div>
+    </div>
+    <div class="side-card">
+      <div class="side-title">☁️ Weather</div>
+      <div id="weather-body" class="side-empty">Loading…</div>
+    </div>
+    <div class="side-card">
+      <div class="side-title">📌 Message</div>
+      <div id="message-body" class="side-empty">—</div>
+    </div>
+    <div class="side-card">
+      <div class="side-title">🛒 Shopping List</div>
+      <div id="shopping-list" class="side-empty">—</div>
+    </div>
+  </aside>
+  </div>
+</div>
+
+<!-- Add panel modal -->
+<div id="add-panel" class="modal" style="display:none">
+  <div class="modal-content">
+    <span class="close-btn" onclick="closeAddPanel()">✕</span>
+    <h2>Add New Item</h2>
+    <div class="form-tabs">
+      <button class="form-tab active" data-form="event">📅 Event</button>
+      <button class="form-tab" data-form="cash">💰 Cash</button>
+    </div>
+    <form id="event-form">
+      <input type="text" name="title" placeholder="Event title (e.g., Jamie soccer practice)" required>
+      <input type="date" name="date">
+      <input type="time" name="time" placeholder="Time">
+      <select name="family_member" id="event-member-select"></select>
+      <select name="category">
+        <option value="event">Event</option>
+        <option value="school">🏫 School</option>
+        <option value="sport">⚽ Sport</option>
+        <option value="medical">🏥 Medical</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea name="description" placeholder="Notes (optional)"></textarea>
+      <button type="submit">Add Event</button>
+    </form>
+    <form id="cash-form" style="display:none">
+      <input type="text" name="title" placeholder="Item (e.g., Field trip fee)" required>
+      <input type="number" step="0.01" name="amount" placeholder="Amount $">
+      <input type="date" name="due_date" placeholder="Due date">
+      <select name="family_member" id="cash-member-select"></select>
+      <select name="category">
+        <option value="school">🏫 School</option>
+        <option value="field_trip">🚌 Field Trip</option>
+        <option value="lunch">🍕 Pizza Lunch</option>
+        <option value="other">Other</option>
+      </select>
+      <textarea name="notes" placeholder="Notes"></textarea>
+      <button type="submit">Add Cash Item</button>
+    </form>
+  </div>
+</div>
+
+<!-- Event detail popup -->
+<div id="event-detail" class="modal" style="display:none">
+  <div class="modal-content detail-content">
+    <span class="close-btn" onclick="closeEventDetail()">✕</span>
+    <div id="event-detail-body"></div>
+  </div>
+</div>
+
+<script src="/static/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+# Family Board
+__pycache__/
+# Homelab-specific (private) — not part of the distributable app
+AGENTS.md
+homelab_release.sh
+*.pyc
+*.pyo
+.env
+.env.*
+data/
+*.db
+*.db-shm
+*.db-wal
+members.json
+google_token.json
+google_client_secret.json
+.DS_Store
+*.swp
+*.swo
+*~
+dist/
+build/
+.venv/
+venv/

@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  family-board:
+    build: .
+    container_name: family-board
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./data:/app/data:Z
+      - ./members.json:/app/members.json:Z
+      - ./app:/app/app:Z
+      - ./scheduler:/app/scheduler:Z
+      - ./google_token.json:/app/google_token.json:ro,Z
+    environment:
+      - TZ=America/Toronto
+      - OPENROUTER_API_KEY=${OPENROUTER_API_KEY:-}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 60s
+      timeout: 10s
+      retries: 3

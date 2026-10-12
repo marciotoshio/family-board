@@ -1,0 +1,53 @@
+{
+  "app_title": "Family Board",
+  "members": [
+    {
+      "key": "alex",
+      "label": "Alex",
+      "emoji": "👩",
+      "color": "#ec4899",
+      "context": "mother (adult)",
+      "aliases": []
+    },
+    {
+      "key": "sam",
+      "label": "Sam",
+      "emoji": "👨",
+      "color": "#3b82f6",
+      "context": "father (adult)",
+      "aliases": []
+    },
+    {
+      "key": "jamie",
+      "label": "Jamie",
+      "emoji": "👦",
+      "color": "#6366f1",
+      "context": "son, 3rd grade at Maplewood Elementary",
+      "aliases": ["Maplewood Elementary", "Grade 3"]
+    },
+    {
+      "key": "taylor",
+      "label": "Taylor",
+      "emoji": "👧",
+      "color": "#14b8a6",
+      "context": "daughter, 7th grade at Northview Middle School",
+      "aliases": ["Northview Middle School", "Grade 7", "Soccer"]
+    },
+    {
+      "key": "riley",
+      "label": "Riley",
+      "emoji": "👦",
+      "color": "#f59e0b",
+      "context": "son, 10th grade at Westbrook High School",
+      "aliases": ["Westbrook High School", "Grade 10"]
+    },
+    {
+      "key": "casey",
+      "label": "Casey",
+      "emoji": "🧑",
+      "color": "#a855f7",
+      "context": "daughter, 12th grade at Westbrook High School",
+      "aliases": ["Westbrook High School", "Grade 12", "Gymnastics"]
+    }
+  ]
+}

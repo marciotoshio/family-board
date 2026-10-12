@@ -1,0 +1,1 @@
+{ "name":"Family Board","short_name":"Family Board","start_url":"/","display":"fullscreen","display_override":["fullscreen","standalone"],"orientation":"landscape","background_color":"#1a1a2e","theme_color":"#2d2d5e","icons":[{"src":"/static/icon.svg","sizes":"512x512","type":"image/svg+xml","purpose":"any"}]}
